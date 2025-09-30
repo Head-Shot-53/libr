@@ -10,15 +10,15 @@ def book_create(request):
             return redirect('book_list')
     else:
         form = BookForm()
-    return render(request, 'books/book_form.html', {'form':form})
+    return render(request, 'library/book_form.html', {'form':form})
 
 def books_list(request):
     books = Book.objects.all()
-    return render(request, 'books/books_list.html', {'books':books})
+    return render(request, 'library/books_list.html', {'books':books})
 
 def book_detail(request, id):
     book = get_object_or_404(Book, id=id)
-    return render(request, 'books/book_detail.html', {'book':book})
+    return render(request, 'library/book_detail.html', {'book':book})
 
 def book_update(request, id):
     book = get_object_or_404(Book, id=id)
@@ -29,14 +29,14 @@ def book_update(request, id):
             return redirect('book_list')
     else:
         form = BookForm(instance=book)
-    return render(request, 'books/book_form.html', {'form':form})
+    return render(request, 'library/book_form.html', {'form':form})
 
 def book_delete(request, id):
     book = get_object_or_404(Book, id=id)
     if request.method == 'POST':
         book.delete()
         return redirect('book_list')
-    return render(request, 'books/book_confirm_delete.html', {'book':book})
+    return render(request, 'library/book_confirm_delete.html', {'book':book})
 
 
     
