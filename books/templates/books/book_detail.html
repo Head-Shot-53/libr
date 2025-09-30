@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ book.title }}{% endblock %}
+{% block content %}
+    <div class="card">
+        <h2>{{ book.title }}</h2>
+        <p><strong>Автор:</strong> {{ book.author }}</p>
+        {% if book.description %}
+            <p><strong>Опис:</strong> {{ book.description }}</p>
+        {% endif %}
+        {% if book.year %}
+            <p><strong>Рік:</strong> {{ book.year }}</p>
+        {% endif %}
+        <a class="button" href="{% url 'book_update' book.id %}">Редагувати</a>
+        <a class="button button-outline" href="{% url 'book_delete' book.id %}">Видалити</a>
+        <a class="button button-outline" href="{% url 'book_list' %}">⬅ Назад</a>
+    </div>
+{% endblock %}
